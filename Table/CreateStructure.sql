@@ -8,22 +8,22 @@
 --       2.3.2 Добавить значение по умолчанию для поля PurchaseDate: дата добавления записи (текущая дата
 create table dbo.SKU
 (
-    ID int identity(1,1) primary key,
-	Code as 's' + cast(ID as varchar(100)),
-   	Name varchar(100),
-  	constraint UQ_SKU_Code unique (Code)
+    ID int identity primary key,
+    Code as 's' + cast(ID as varchar(100)),
+    Name varchar(100),
+    constraint UQ_SKU_Code unique (Code)
 );
 
 create table dbo.Family
 (
-    ID int identity(1,1) primary key,
+    ID int identity primary key,
     SurName varchar(100),
     BudgetValue decimal(18,2)
 );
 
 create table dbo.Basket
 (
-    ID int identity(1,1) primary key,
+    ID int identity primary key,
     ID_SKU int foreign key references dbo.SKU(ID),
     ID_Family int foreign key references dbo.Family(ID),
     Quantity int check(Quantity >= 0),
