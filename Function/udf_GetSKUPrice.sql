@@ -9,9 +9,9 @@ create or alter function dbo.udf_GetSKUPrice (
 returns decimal(18,2)
 as
 begin
-    declare @SKUPrise decimal(18,2);
-    select @SKUPrise = cast(sum(b.Value) as float)/sum(b.Quantity)
+    declare @SKUPrice decimal(18,2);
+    select @SKUPrice = cast(sum(b.Value) as float)/sum(b.Quantity)
     from dbo.Basket as b
     where b.ID_SKU = @ID_SKU
-    return @SKUPrise;
+    return @SKUPrice;
 end;
